@@ -77,89 +77,45 @@ func (l *LoggerT) log(level int, calldepth int, format string, args ...interface
 	return true
 }
 
-func (l *LoggerT) Debug(format string, args ...interface{}) bool {
+func (l *LoggerT) Debugf(format string, args ...interface{}) bool {
 	return l.log(LOG_DEBUG, 3, format, args...)
 }
 
 // 允许对日志打印函数进行二次包装，方便打印固定的信息
-func (l *LoggerT) DebugUpper(up int, format string, args ...interface{}) bool {
+func (l *LoggerT) UpDebugf(up int, format string, args ...interface{}) bool {
 	return l.log(LOG_DEBUG, 3+up, format, args...)
 }
 
-func (l *LoggerT) Info(format string, args ...interface{}) bool {
+func (l *LoggerT) Infof(format string, args ...interface{}) bool {
 	return l.log(LOG_INFO, 3, format, args...)
 }
 
-func (l *LoggerT) InfoUpper(up int, format string, args ...interface{}) bool {
+func (l *LoggerT) UpInfof(up int, format string, args ...interface{}) bool {
 	return l.log(LOG_INFO, 3+up, format, args...)
 }
 
-func (l *LoggerT) Warn(format string, args ...interface{}) bool {
+func (l *LoggerT) Warnf(format string, args ...interface{}) bool {
 	return l.log(LOG_WARN, 3, format, args...)
 }
 
-func (l *LoggerT) WarnUpper(up int, format string, args ...interface{}) bool {
+func (l *LoggerT) UpWarnf(up int, format string, args ...interface{}) bool {
 	return l.log(LOG_WARN, 3+up, format, args...)
 }
 
-func (l *LoggerT) Error(format string, args ...interface{}) bool {
+func (l *LoggerT) Errorf(format string, args ...interface{}) bool {
 	return l.log(LOG_ERROR, 3, format, args...)
 }
 
-func (l *LoggerT) ErrorUpper(up int, format string, args ...interface{}) bool {
+func (l *LoggerT) UpErrorf(up int, format string, args ...interface{}) bool {
 	return l.log(LOG_ERROR, 3+up, format, args...)
 }
 
-func (l *LoggerT) Fatal(format string, args ...interface{}) bool {
+func (l *LoggerT) Fatalf(format string, args ...interface{}) bool {
 	return l.log(LOG_FATAL, 3, format, args...)
 }
 
-func (l *LoggerT) FatalUpper(up int, format string, args ...interface{}) bool {
+func (l *LoggerT) UpFatal(up int, format string, args ...interface{}) bool {
 	return l.log(LOG_FATAL, 3+up, format, args...)
-}
-
-func SetLogLevel(logLevel int) {
-	defaultLogger.SetLogLevel(logLevel)
-}
-
-func LogDebug(format string, args ...interface{}) bool {
-	return defaultLogger.log(LOG_DEBUG, 3, format, args...)
-}
-
-func LogInfo(format string, args ...interface{}) bool {
-	return defaultLogger.log(LOG_INFO, 3, format, args...)
-}
-
-func LogWarn(format string, args ...interface{}) bool {
-	return defaultLogger.log(LOG_WARN, 3, format, args...)
-}
-
-func LogError(format string, args ...interface{}) bool {
-	return defaultLogger.log(LOG_ERROR, 3, format, args...)
-}
-
-func LogFatal(format string, args ...interface{}) bool {
-	return defaultLogger.log(LOG_FATAL, 3, format, args...)
-}
-
-func LogDebugUpper(up int, format string, args ...interface{}) bool {
-	return defaultLogger.log(LOG_DEBUG, 3+up, format, args...)
-}
-
-func LogInfoUpper(up int, format string, args ...interface{}) bool {
-	return defaultLogger.log(LOG_INFO, 3+up, format, args...)
-}
-
-func LogWarnUpper(up int, format string, args ...interface{}) bool {
-	return defaultLogger.log(LOG_WARN, 3+up, format, args...)
-}
-
-func LogErrorUpper(up int, format string, args ...interface{}) bool {
-	return defaultLogger.log(LOG_ERROR, 3+up, format, args...)
-}
-
-func LogFatalUpper(up int, format string, args ...interface{}) bool {
-	return defaultLogger.log(LOG_FATAL, 3+up, format, args...)
 }
 
 func init() {
